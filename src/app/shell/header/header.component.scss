@@ -1,0 +1,27 @@
+.header {
+  &__logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    background-color: #7b1fa2;
+    color: #ff44c6;
+  }
+
+  &__logo-text {
+    font-family: "Oleo Script Swash Caps", cursive;
+    font-size: 45px;
+    margin-top: 16px;
+  }
+
+  &__logo-img {
+    height: 80px;
+  }
+
+  &__logout-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+  }
+}
