@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-@import "./styles/buttons.scss";
+@import url("https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -14,4 +13,20 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #d7e9e2;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #69f0ae;
+  padding: 20px;
+  border-radius: 8px;
+  width: 700px;
+
+  button {
+    width: 201px;
+  }
 }
