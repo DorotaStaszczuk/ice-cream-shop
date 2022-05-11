@@ -1,0 +1,30 @@
+<ng-container *ngIf="role$ | async as role">
+
+  <form *ngIf="role === 'iceman'" class="flavor-form">
+    <p class="flavor-form__name">Dodaj nowy smak</p>
+
+    <mat-form-field appearance="fill" color="primary">
+      <mat-label>Nazwa smaku</mat-label>
+      <input matInput type="text" [formControl]="flavorControl" required>
+    </mat-form-field>
+
+    <button (click)="addNewFlavor()" mat-raised-button color="primary" class="flavor-form__btn">Dodaj</button>
+  </form>
+
+  <form *ngIf="role === 'client'" class="flavor-form">
+    <p class="flavor-form__name">Dodaj nowy ulubiony smak</p>
+    <ng-container *ngIf="user$ | async as user">
+      <mat-form-field appearance="fill" color="primary">
+        <mat-label>Wybierz smak</mat-label>
+        <mat-select [formControl]="favoriteFlavorControl" required>
+          <mat-option *ngFor="let flavor of user.flavors, let i = index" [value]="flavor">
+            {{ flavor }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+
+    <button (click)="addNewFavoriteFlavor()" mat-raised-button color="primary"  class="flavor-form__btn">Dodaj</button>
+  </form>
+
+</ng-container>
