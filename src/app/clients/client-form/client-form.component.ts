@@ -20,10 +20,21 @@ export class ClientFormComponent {
     const email = this.userEmailControl.value;
     const password = this.userPasswordControl.value;
 
-    this.authService.onSignup(name, email, password);
+    const testName = /^\s+$/.test(name);
+    const testEmail = /^\s+$/.test(email);
+    const testPassword = /^\s+$/.test(password);
 
-    this.userNameControl.reset();
-    this.userEmailControl.reset();
-    this.userPasswordControl.reset();
+    if (testName === false && testEmail === false && testPassword === false) {
+      this.authService.onSignup(name, email, password);
+      this.userNameControl.reset();
+      this.userEmailControl.reset();
+      this.userPasswordControl.reset();
+    } else if (testName === true) {
+      alert('Nie można dodać pustego imienia i nazwiska');
+    } else if (testEmail === true) {
+      alert('Nie można dodać pustego emaila');
+    } else if (testPassword === true) {
+      alert('Nie można dodać pustego hasła');
+    }
   }
 }
