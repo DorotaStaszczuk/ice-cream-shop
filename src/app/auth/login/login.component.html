@@ -1,0 +1,20 @@
+<div class="login__container">
+  <div>
+    <div class="login__logo-container">
+      <p class="login__logo-text">IceCreamShop</p>
+      <img src="../../../assets/ice-cream.png" class="login__logo-img" alt="logo" />
+    </div>
+    <form class="login-form">
+      <p class="login-form__name">Logowanie</p>
+      <mat-form-field appearance="fill" color="primary">
+        <mat-label>Email</mat-label>
+        <input type="email" [formControl]="emailControl" matInput class="login-form__input" required>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="invert">
+        <mat-label>Hasło</mat-label>
+        <input type="password" [formControl]="passwordControl" matInput class="login-form__input" required>
+      </mat-form-field>
+      <button (click)="onSubmit()"  mat-raised-button color="primary" class="login-form__btn">Zaloguj</button>
+    </form>
+  </div>
+</div>
