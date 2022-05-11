@@ -1,0 +1,12 @@
+<form class="amount-form">
+  <p class="amount-form__name">Dodaj nową jednostkę</p>
+    <mat-form-field appearance="fill" color="primary">
+      <mat-label>Nazwa</mat-label>
+      <input matInput type="text" [formControl]="amountNameControl" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" color="primary">
+      <mat-label>Pojemność w ml</mat-label>
+      <input matInput type="number" [formControl]="amountCapacityControl" required>
+    </mat-form-field>
+    <button (click)="addNewAmount()" mat-raised-button color="primary" class="amount-form__btn">Dodaj</button>
+</form>
