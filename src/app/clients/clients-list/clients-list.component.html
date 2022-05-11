@@ -1,0 +1,13 @@
+<ng-container *ngIf="clients$ | async as clients">
+  <p>Lista klientów</p>
+  <div class="clients-list__container">
+    <app-list-item *ngFor="let client of clients, let i = index">
+      <div class="clients-list__element">
+        {{ i + 1 }}.
+      </div>
+      <div class="clients-list__element">
+        {{ client.userName }}
+      </div>
+    </app-list-item>
+  </div>
+</ng-container>
