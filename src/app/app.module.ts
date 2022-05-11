@@ -37,6 +37,7 @@ import { authReducer } from './store/auth';
 import { userReducer } from './store/user/user.reducer';
 import { AppState } from './store/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ordersReducer } from './store/orders';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    StoreModule.forRoot<AppState>({ auth: authReducer, user: userReducer }),
+    StoreModule.forRoot<AppState>({
+      auth: authReducer,
+      user: userReducer,
+      orders: ordersReducer,
+    }),
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
       autoPause: true,
