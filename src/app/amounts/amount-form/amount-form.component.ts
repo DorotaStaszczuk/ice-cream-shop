@@ -17,8 +17,15 @@ export class AmountFormComponent {
   public addNewAmount() {
     const name = this.amountNameControl.value;
     const capacity = this.amountCapacityControl.value;
-    this.firestoreService.addNewAmount(name, capacity);
-    this.amountNameControl.reset();
-    this.amountCapacityControl.reset();
+    const test = /^\s+$/.test(name);
+    if (test === false && capacity !== 0) {
+      this.firestoreService.addNewAmount(name, capacity);
+      this.amountNameControl.reset();
+      this.amountCapacityControl.reset();
+    } else if (test === true) {
+      alert('Nie można dodać pustej nazwy');
+    } else if (capacity === 0) {
+      alert('Nie można dodać zerowej pojemności');
+    }
   }
 }
