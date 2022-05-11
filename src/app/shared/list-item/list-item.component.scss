@@ -1,0 +1,23 @@
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  border-top: 0.063rem solid #d7e9e2;
+  border-bottom: 0.063rem solid #d7e9e2;
+  padding: 10px;
+  background-color: #69f0ae;
+  width: 700px;
+}
+
+@media (max-width: 768px) {
+  .list-item {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 375px) {
+  .list-item {
+    flex-direction: column;
+  }
+}
