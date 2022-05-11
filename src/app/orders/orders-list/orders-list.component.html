@@ -1,0 +1,74 @@
+
+<ng-container *ngIf="role$ | async as role">
+
+  <ng-container *ngIf="role === 'iceman'">
+    <ng-container *ngIf="clients$ | async as clients">
+      <p class="orders-list__name">Lista zamówień klientów</p>
+      <div class="orders-list__container">
+        <ng-container *ngFor="let client of clients, let i = index">
+          <app-list-item *ngIf="client.orders && client.orders.length > 0 && client.orders[client.orders.length - 1].date === currentDate">
+            <div class="orders-list__element">{{ i + 1 }}.</div>
+            <div class="orders-list__element">{{client.userName}}</div>
+            <div class="order-list__element">Lody {{ client.orders[client.orders.length - 1].flavorName }} </div>
+            <div class="orders-list__element">{{ client.orders[client.orders.length - 1].amountCapacity }}ml</div>
+            <div class="orders-list__element">x{{ client.orders[client.orders.length - 1].quantity }}</div>
+            <div class="orders-list__element">{{ client.orders[client.orders.length - 1].date }}</div>
+          </app-list-item>
+        </ng-container>
+      </div>
+
+      <!-- ; else noTodaysOrders -->
+      <div *ngIf="todayOrders$ | async as orders">
+        {{orders}}
+        <button  mat-raised-button color="primary"></button>
+      </div>
+      <!-- (click)="getSumOfOrders(orders)" -->
+      <!-- <ng-container *ngIf="sumOfOrders$ | async as sum">
+        {{sum}}
+        <p class="orders-list__name">Lista zamówionych smaków</p> -->
+        <!-- <div class="orders-list__container">
+          <ng-container *ngFor="let client of clients, let i = index">
+            <app-list-item>
+              <div class="orders-list__element">{{ i + 1 }}.</div>
+              <div class="orders-list__element">{{client.userName}}</div>
+              <div class="order-list__element">Lody {{ client.orders[client.orders.length - 1].flavorName }} </div>
+              <div class="orders-list__element">{{ client.orders[client.orders.length - 1].amountCapacity }}ml</div>
+              <div class="orders-list__element">x{{ client.orders[client.orders.length - 1].quantity }}</div>
+              <div class="orders-list__element">x{{ client.orders[client.orders.length - 1].date }}</div>
+            </app-list-item>
+          </ng-container>
+        </div> -->
+      <!-- </ng-container> -->
+
+      <ng-template #noTodaysOrders>
+        <p>Brak zamówień.</p>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+
+
+
+
+
+  <ng-container *ngIf="user$ | async as user">
+    <ng-container *ngIf="role === 'client'">
+      <ng-container *ngIf="user.orders && user.orders.length!==0; else noOrders">
+      <p class="orders-list__name">Ostatnie zamówienie</p>
+      <div class="orders-list__container">
+            <app-list-item >
+              <div class="order-list__element">{{ user.orders[user.orders.length - 1].date }} </div>
+              <div class="order-list__element">Lody {{ user.orders[user.orders.length - 1].flavorName }}  </div>
+              <div class="orders-list__element"> {{ user.orders[user.orders.length - 1].amountCapacity }} ml </div>
+              <div class="orders-list__element">x {{ user.orders[user.orders.length - 1].quantity }}</div>
+              <button  *ngIf="user.orders[user.orders.length - 1].date < currentDate" (click)="addNewOrder(user.orders[user.orders.length - 1].flavorName, user.orders[user.orders.length - 1].amountCapacity, user.orders[user.orders.length - 1].quantity)" mat-button color="primary">Zamów ponownie</button>
+            </app-list-item>
+        </div>
+      </ng-container>
+
+      <ng-template #noOrders>
+        <p>Brak zamówień. Złóż zamówienie korzystając z formularza poniżej.</p>
+      </ng-template>
+    </ng-container>
+  </ng-container>
+
+</ng-container>
