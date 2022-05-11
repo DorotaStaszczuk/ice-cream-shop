@@ -17,38 +17,11 @@
         </ng-container>
       </div>
 
-      <!-- ; else noTodaysOrders -->
-      <div *ngIf="todayOrders$ | async as orders">
-        {{orders}}
-        <button  mat-raised-button color="primary"></button>
-      </div>
-      <!-- (click)="getSumOfOrders(orders)" -->
-      <!-- <ng-container *ngIf="sumOfOrders$ | async as sum">
-        {{sum}}
-        <p class="orders-list__name">Lista zamówionych smaków</p> -->
-        <!-- <div class="orders-list__container">
-          <ng-container *ngFor="let client of clients, let i = index">
-            <app-list-item>
-              <div class="orders-list__element">{{ i + 1 }}.</div>
-              <div class="orders-list__element">{{client.userName}}</div>
-              <div class="order-list__element">Lody {{ client.orders[client.orders.length - 1].flavorName }} </div>
-              <div class="orders-list__element">{{ client.orders[client.orders.length - 1].amountCapacity }}ml</div>
-              <div class="orders-list__element">x{{ client.orders[client.orders.length - 1].quantity }}</div>
-              <div class="orders-list__element">x{{ client.orders[client.orders.length - 1].date }}</div>
-            </app-list-item>
-          </ng-container>
-        </div> -->
-      <!-- </ng-container> -->
-
       <ng-template #noTodaysOrders>
         <p>Brak zamówień.</p>
       </ng-template>
     </ng-container>
   </ng-container>
-
-
-
-
 
   <ng-container *ngIf="user$ | async as user">
     <ng-container *ngIf="role === 'client'">
