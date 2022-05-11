@@ -25,8 +25,14 @@ export class FlavorsFormComponent {
   ) {}
 
   public addNewFlavor() {
-    this.firestoreService.addNewFlavor(this.flavorControl.value);
-    this.flavorControl.reset();
+    const flavor = this.flavorControl.value;
+    const test = /^\s+$/.test(flavor);
+    if (test === false) {
+      this.firestoreService.addNewFlavor(flavor);
+      this.flavorControl.reset();
+    } else {
+      alert('Nie można dodać pustej nazwy');
+    }
   }
 
   public addNewFavoriteFlavor() {
