@@ -1,0 +1,42 @@
+<ng-container *ngIf="role$ | async as role">
+  <ng-container *ngIf="user$ | async as user">
+    <ng-container *ngIf="!user.orders || (user.orders.length!==0 && user.orders[user.orders.length - 1].date !== currentDate); else noForm">
+      <form *ngIf="role === 'client'" class="order-form">
+        <p class="order-form__name">Dodaj nowe zamówienie</p>
+
+        <ng-container *ngIf="iceman$ | async as iceman">
+          <ng-container>
+            <mat-form-field appearance="fill" color="primary">
+              <mat-label>Wybierz smak</mat-label>
+              <mat-select [formControl]="flavorControl" required>
+                <mat-option *ngFor="let flavor of iceman.flavors, let i = index" [value]="flavor">
+                  {{ flavor }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" color="primary">
+              <mat-label>Wybierz wielkość</mat-label>
+              <mat-select [formControl]="amountControl" required>
+                <mat-option *ngFor="let amount of iceman.amounts, let i = index" [value]="amount">
+                  {{ amount.amountName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" color="primary">
+              <mat-label>Podaj ilość</mat-label>
+              <input [formControl]="quantityControl" matInput type="number" required>
+            </mat-form-field>
+          </ng-container>
+        </ng-container>
+
+        <button (click)="onSubmit()" type="submit" mat-raised-button color="primary" class="order-form__btn" >Dodaj</button>
+      </form>
+    </ng-container>
+
+    <ng-template #noForm>
+      <p>Aktualnie można złożyć tylko jedno zamówienie dziennie. Wróć jutro aby złożyć nowe zamówienie.</p>
+    </ng-template>
+  </ng-container>
+</ng-container>
