@@ -1,0 +1,7 @@
+<div *ngIf="authenticated$ | async">
+  <app-header></app-header>
+  <app-navigation></app-navigation>
+</div>
+<main>
+  <router-outlet></router-outlet>
+</main>
