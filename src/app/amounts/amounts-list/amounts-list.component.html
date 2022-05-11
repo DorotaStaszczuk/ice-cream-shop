@@ -1,0 +1,16 @@
+<p>Lista jednostek</p>
+<ng-container *ngIf="user$ | async as user">
+  <div class="amounts-list__container">
+  <app-list-item *ngFor="let amount of user.amounts, let i = index">
+    <div class="amounts-list__element">
+      {{ i + 1 }}.
+    </div>
+    <div class="amounts-list__element">
+      {{ amount.amountName }}
+    </div>
+    <div class="amounts-list__element">
+      {{ amount.amountCapacity }}
+    </div>
+  </app-list-item>
+</div>
+</ng-container>
