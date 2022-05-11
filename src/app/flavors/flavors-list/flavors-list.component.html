@@ -1,8 +1,8 @@
 
 <ng-container *ngIf="role$ | async as role">
   <ng-container *ngIf="user$ | async as user">
-  <ng-container *ngIf="role === 'iceman'">
 
+    <ng-container *ngIf="role === 'iceman'">
       <p>Lista dostępnych smaków</p>
       <div class="flavors-list__container">
         <app-list-item *ngFor="let flavor of user.flavors, let i = index">
@@ -14,11 +14,10 @@
           </div>
         </app-list-item>
       </div>
-
     </ng-container>
 
+    <ng-container *ngIf="role === 'client'">
     <ng-container *ngIf="user.favoriteFlavors; else noFavorites">
-      <ng-container *ngIf="role === 'client'">
         <p>Lista ulubionych smaków</p>
         <div class="flavors-list__container">
           <app-list-item *ngFor="let flavor of user.favoriteFlavors, let i = index">
