@@ -1,0 +1,13 @@
+<ng-container *ngIf="role$ | async as role">
+
+  <nav *ngIf="role === 'iceman'" mat-tab-nav-bar mat-stretch-tabs backgroundColor="accent" [tabPanel]="tabPanel">
+    <a mat-tab-link *ngFor="let link of icemanLinks; let i=index" (click)="activeLinkIceman = link"
+    [active]="activeLinkIceman == link" [routerLink]="icemanRoutes[i]">{{link}} </a>
+  </nav>
+
+<nav *ngIf="role === 'client'" mat-tab-nav-bar mat-stretch-tabs backgroundColor="accent" [tabPanel]="tabPanel">
+  <a mat-tab-link *ngFor="let link of clientLinks; let i=index" (click)="activeLinkClient = link"
+  [active]="activeLinkClient == link" [routerLink]="clientRoutes[i]">{{link}} </a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+</ng-container>
