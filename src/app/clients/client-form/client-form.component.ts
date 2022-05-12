@@ -29,6 +29,7 @@ export class ClientFormComponent {
       this.userNameControl.reset();
       this.userEmailControl.reset();
       this.userPasswordControl.reset();
+      alert('Dodano nowego klienta');
     } else if (testName === true) {
       alert('Nie można dodać pustego imienia i nazwiska');
     } else if (testEmail === true) {
