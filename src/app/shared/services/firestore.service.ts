@@ -2,11 +2,9 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { arrayUnion, doc, getFirestore, updateDoc } from 'firebase/firestore';
 import { map } from 'rxjs';
-import { User } from 'src/app/shared/models';
+import { Amount, User } from 'src/app/shared/models';
 import { OrderData } from 'src/app/shared/models';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.state';
-
+import { arrayRemove } from 'firebase/firestore';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +12,7 @@ export class FirestoreService {
   userName = '';
   role = '';
 
-  constructor(private db: AngularFirestore, private store: Store<AppState>) {}
+  constructor(private db: AngularFirestore) {}
 
   public getAllClients() {
     return this.db
@@ -64,6 +62,30 @@ export class FirestoreService {
         flavorName: order.flavorName,
         amountCapacity: order.amountCapacity,
         quantity: order.quantity,
+      }),
+    });
+  }
+
+  public deleteFlavor(flName: string) {
+    const ref = doc(getFirestore(), 'users', 'g73q2id76nXTiJWO1jizQyDLfMg2');
+    updateDoc(ref, {
+      flavors: arrayRemove(flName),
+    });
+  }
+
+  public deleteFavoriteFlavor(flName: string, uid: string) {
+    const ref = doc(getFirestore(), 'users', uid);
+    updateDoc(ref, {
+      favoriteFlavors: arrayRemove(flName),
+    });
+  }
+
+  public deleteAmount(amount: Amount) {
+    const ref = doc(getFirestore(), 'users', 'g73q2id76nXTiJWO1jizQyDLfMg2');
+    updateDoc(ref, {
+      amounts: arrayRemove({
+        amountName: amount.amountName,
+        amountCapacity: amount.amountCapacity,
       }),
     });
   }
