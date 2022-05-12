@@ -42,11 +42,11 @@ export class OrderFormComponent implements OnInit {
       quantity: quantity,
     };
 
-    if (flavor && amount && quantity) {
+    if (flavor && amount && quantity && quantity > 0) {
       this.firestoreService.addNewOrder(this.uid, order);
       alert('Zamówienie zostało złożone');
-    } else if (quantity === 0) {
-      alert('Nie można dodać zerowej ilości');
+    } else if (quantity <= 0) {
+      alert('Podano nieprawidłową ilość');
     }
   }
 }
