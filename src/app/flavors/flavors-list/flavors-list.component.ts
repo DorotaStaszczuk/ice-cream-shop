@@ -13,10 +13,19 @@ import { AppState } from 'src/app/store/app.state';
 export class FlavorsListComponent {
   user$ = this.firestoreService.getUserData(this.authService.uid);
   role$ = this.store.select((state) => state.user.role);
+  uid = this.authService.uid;
 
   constructor(
     private firestoreService: FirestoreService,
     private store: Store<AppState>,
     private authService: AuthService
   ) {}
+
+  public deleteFlavor(flName: string) {
+    this.firestoreService.deleteFlavor(flName);
+  }
+
+  public deleteFavoriteFlavor(flName: string) {
+    this.firestoreService.deleteFavoriteFlavor(flName, this.uid);
+  }
 }
