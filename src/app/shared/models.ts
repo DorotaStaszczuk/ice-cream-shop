@@ -1,8 +1,3 @@
-export interface Flavor {
-  flavorName: string;
-  flavorCapacity: number;
-}
-
 export interface Amount {
   amountName: string;
   amountCapacity: number;
@@ -24,7 +19,7 @@ export interface OrderData {
 export interface User {
   role: string;
   userName: string;
-  flavors: Flavor[];
+  flavors: string[];
   amounts: Amount[];
   favoriteFlavors: string[];
   orders: Order[];
