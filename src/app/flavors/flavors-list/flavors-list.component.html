@@ -12,6 +12,7 @@
           <div class="flavors-list__element">
             {{ flavor }}
           </div>
+          <button (click)="deleteFlavor(flavor)" mat-button color="primary">Usuń</button>
         </app-list-item>
       </div>
     </ng-container>
@@ -27,6 +28,8 @@
             <div class="flavors-list__element">
               {{ flavor }}
             </div>
+            <button (click)="deleteFavoriteFlavor(flavor)" mat-button color="primary">Usuń</button>
+
           </app-list-item>
         </div>
       </ng-container>
