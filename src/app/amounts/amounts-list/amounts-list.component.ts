@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
+import { Amount } from 'src/app/shared/models';
 import { FirestoreService } from 'src/app/shared/services/firestore.service';
 
 @Component({
@@ -15,4 +16,9 @@ export class AmountsListComponent {
     private firestoreService: FirestoreService,
     private authService: AuthService
   ) {}
+
+  public deleteAmount(amount: Amount) {
+    console.log('amount', amount);
+    this.firestoreService.deleteAmount(amount);
+  }
 }
