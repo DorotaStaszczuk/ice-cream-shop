@@ -30,6 +30,7 @@ export class FlavorsFormComponent {
     if (test === false) {
       this.firestoreService.addNewFlavor(flavor);
       this.flavorControl.reset();
+      alert('Nowy smak został dodany');
     } else {
       alert('Nie można dodać pustej nazwy');
     }
@@ -41,5 +42,6 @@ export class FlavorsFormComponent {
       this.uid
     );
     this.favoriteFlavorControl.reset();
+    alert('Nowy ulubiony smak został dodany');
   }
 }
