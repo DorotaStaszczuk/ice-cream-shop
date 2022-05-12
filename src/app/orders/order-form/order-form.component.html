@@ -19,7 +19,7 @@
               <mat-label>Wybierz wielkość</mat-label>
               <mat-select [formControl]="amountControl" required>
                 <mat-option *ngFor="let amount of iceman.amounts, let i = index" [value]="amount">
-                  {{ amount.amountName }}
+                  {{ amount.amountName }} - {{ amount.amountCapacity }} ml
                 </mat-option>
               </mat-select>
             </mat-form-field>
